@@ -1,7 +1,9 @@
 <template>
     <h1 class="title">
         <slot></slot>
-        <span :class="this.stopBlink ? 'stop-blink' : null">{{ dynamicText }}</span>
+        <span :class="this.stopBlink ? 'stop-blink' : null">{{
+            dynamicText
+        }}</span>
     </h1>
 </template>
 
@@ -14,13 +16,13 @@ export default {
             isDeleting: false,
             dynamicText: "Конференции",
             stopBlink: false,
-        }
+        };
     },
     props: {
         words: Array,
     },
     mounted() {
-        this.typingEffect()
+        this.typingEffect();
     },
     methods: {
         typingEffect() {
@@ -37,12 +39,14 @@ export default {
             } else {
                 this.isDeleting = !this.isDeleting;
                 this.stopBlink = false;
-                this.wordIndex = !this.isDeleting ? (this.wordIndex + 1) % this.words.length : this.wordIndex;
+                this.wordIndex = !this.isDeleting
+                    ? (this.wordIndex + 1) % this.words.length
+                    : this.wordIndex;
                 setTimeout(this.typingEffect, 100);
             }
-        }
-    }
-}
+        },
+    },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -50,6 +54,8 @@ export default {
     font-size: 35px;
 
     span {
+        display: table;
+        height: 45px;
         position: relative;
         color: var(--first-color);
 
