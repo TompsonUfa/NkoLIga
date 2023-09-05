@@ -5,6 +5,7 @@
         <section-news></section-news>
         <section-team></section-team>
         <section-project></section-project>
+        <section-smi></section-smi>>
     </main>
 </template>
 
@@ -14,6 +15,7 @@ import SectionAbout from "@/components/SectionAbout.vue";
 import SectionNews from "@/components/SectionNews.vue";
 import SectionTeam from "@/components/SectionTeam.vue";
 import SectionProject from "@/components/SectionProject.vue";
+import SectionSmi from "@/components/SectionSMI.vue";
 export default {
     components: {
         SectionHome,
@@ -21,6 +23,7 @@ export default {
         SectionNews,
         SectionTeam,
         SectionProject,
+        SectionSmi
     },
 };
 </script>
@@ -32,6 +35,7 @@ export default {
 
 .section {
     padding-top: var(--header-height);
+
     &__link {
         display: inline-block;
         background-color: #222;
@@ -44,10 +48,12 @@ export default {
         transition: background-color 0.3s;
         cursor: pointer;
         text-decoration: none;
+
         &:hover {
             background-color: var(--second-color);
         }
     }
+
     &__title {
         margin: 35px 0;
         display: inline-block;
