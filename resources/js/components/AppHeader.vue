@@ -1,6 +1,6 @@
 <template>
     <header class="header fixed-top">
-        <app-nav></app-nav>
+        <app-nav :links="links"></app-nav>
     </header>
 </template>
 
@@ -10,12 +10,27 @@ export default {
     components: {
         AppNav,
     },
+    props: {
+        links: {
+            type: Array,
+            required: true,
+        }
+    }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .header {
     height: var(--header-height);
     width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.scrolled {
+    background-color: #000;
+    a {
+        color: #fff;
+    }
 }
 </style>

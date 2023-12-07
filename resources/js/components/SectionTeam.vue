@@ -5,32 +5,20 @@
                 <div class="col-12 text-center">
                     <h2 class="section__title">Наша команда</h2>
                 </div>
-                <div class="col-12 team">
-                    <div class="team__item p-4">
-                        <div class="team__img mb-3">
-                            <img
-                                src="/images/team/1.jpeg"
-                                alt="Первый сотрудник"
-                            />
+            </div>
+            <div class="row team">
+                <div class="col-12 col-lg-6 mb-4 team__item" v-for="item in team" :key="item.id">
+                    <div class="row">
+                        <div class="col-12 col-lg-6 team__view pb-3 pb-lg-0">
+                            <img class="team__img" :src="item.img" :alt="item.title">
                         </div>
-                        <h4 class="team__title mb-3">Виктори Лоунс</h4>
-                        <p class="team__desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Cum est deleniti accusantium ratione.
-                        </p>
-                    </div>
-                    <div class="team__item p-4">
-                        <div class="team__img mb-3">
-                            <img
-                                src="/images/team/2.jpg"
-                                alt="Первый сотрудник"
-                            />
+                        <div class="col-12 col-lg-6 team__content">
+                            <h5 class="team__title">{{ item.title }}</h5>
+                            <p class="team__desc">
+                                {{item.desc}}
+                            </p>
+
                         </div>
-                        <h4 class="team__title mb-3">Алиса Бонс</h4>
-                        <p class="team__desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Cum est deleniti accusantium ratione.
-                        </p>
                     </div>
                 </div>
             </div>
@@ -39,33 +27,71 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            team: [
+                {
+                    id: 1,
+                    title: "Nina Scavo",
+                    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat",
+                    img: "/images/team/1.jpeg"
+                },
+                {
+                    id: 2,
+                    title: "Linda Kim",
+                    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat",
+                    img: "/images/team/2.jpeg"
+                },
+                {
+                    id: 3,
+                    title: "Di Dowson",
+                    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat",
+                    img: "/images/team/3.jpeg"
+                },
+                {
+                    id: 4,
+                    title: "Sofa Brown",
+                    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat",
+                    img: "/images/team/4.jpeg"
+                },
+            ],
+        };
+    }
+};
 </script>
 
 <style lang="scss" scoped>
 .team {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-
-    &__item {
-        width: 350px;
-        min-height: 400px;
-        overflow: hidden;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    &__view {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     &__img {
-        width: 100%;
-        height: 100%;
-        max-height: 200px;
-        img {
-            width: inherit;
-            height: inherit;
-            object-fit: cover;
-        }
+        width: 255px;
+        height: 308px;
+        object-fit: cover;
     }
     &__title {
-        color: var(--first-color);
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin: 0;
+    }
+    &__desc {
+        font-style: normal;
+        margin: 20px 0;
+    }
+    &__link {
+        background-color: var(--second-color);
+        text-decoration: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        transition: 0.3s ease;
+        &:hover {
+            opacity: 0.8;
+        }
     }
 }
 </style>

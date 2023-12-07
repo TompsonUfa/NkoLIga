@@ -57,7 +57,7 @@ export default {
         display: table;
         height: 45px;
         position: relative;
-        color: var(--first-color);
+        color: var(--second-color);
 
         &::before {
             content: "";
@@ -66,7 +66,7 @@ export default {
             top: 50%;
             height: 30px;
             width: 2px;
-            background: var(--first-color);
+            background: var(--second-color);
             transform: translateY(-45%);
             animation: blink 0.7s infinite;
         }

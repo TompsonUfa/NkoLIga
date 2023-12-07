@@ -5,11 +5,11 @@
                 <div class="col-12 text-center">
                     <h2 class="section__title">Новости</h2>
                 </div>
+                <div class="col-12">
+                    <a class="section__link mb-3" href="/news">Все новости</a>
+                </div>
             </div>
-            <div class="col-12">
-                <a class="section__link mb-3" href="/news">Все новости</a>
-            </div>
-            <div class="row news">
+            <div class="news row">
                 <div class="col-12 col-lg-6 h-60 h-lg-100 p-0">
                     <div class="news__item news__item_idx_1">
                         <div class="news__img">
@@ -25,9 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <div
-                    class="col-12 col-lg-6 h-40 h-lg-100 pt-1 pt-lg-0 ps-0 ps-lg-1 overflow-auto"
-                >
+                <div class="col-12 col-lg-6 h-40 h-lg-100 pt-1 pt-lg-0 ps-lg-1 overflow-auto p-0">
                     <div class="row h-100 flex-nowrap flex-lg-wrap m-0 2">
                         <div
                             class="col-10 h-sm-100 h-60 col-lg-12 p-0 pb-0 pb-lg-1 pe-1 pe-lg-0"
@@ -100,8 +98,9 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+
 .news {
-    height: 500px;
+    height: 650px;
     &__item {
         position: relative;
         width: 100%;

@@ -8,8 +8,8 @@ $line-height-base: 1.6;
 
 :root {
     --header-height: 55px;
-    --first-color: #99ca3d;
-    --second-color: #1295db;
+    --first-color: #000;
+    --second-color: #F92D36;
     --dark-color: #38454d;
     --text-color: #cacaca;
 }
@@ -20,7 +20,9 @@ $line-height-base: 1.6;
 .h-40 {
     height: 40%;
 }
-
+html, body {
+    scroll-behavior: smooth;
+}
 @media screen and (min-width: 992px) {
     .h-lg-100 {
         height: 100% !important;

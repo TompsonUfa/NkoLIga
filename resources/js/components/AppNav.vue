@@ -1,7 +1,7 @@
 <template>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg p-0 w-100">
         <div class="container">
-            <a href="#" class="navbar-brand">NKO</a>
+            <a href="#" class="navbar-brand">Лига</a>
             <button
                 class="navbar-toggler"
                 type="button"
@@ -33,7 +33,7 @@
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li
                             class="nav-item"
-                            v-for="link in this.links"
+                            v-for="link in links"
                             :key="link.id"
                         >
                             <a
@@ -52,19 +52,21 @@
 
 <script>
 export default {
-    data() {
-        return {
-            links: [
-                { id: 1, name: "О нас", href: "#about" },
-                { id: 2, name: "Новости", href: "#news" },
-                { id: 3, name: "Команда", href: "#team" },
-                { id: 4, name: "Проекты", href: "#project" },
-                { id: 7, name: "СМИ", href: "#SMI" },
-                { id: 8, name: "Контакты", href: "#contact" },
-            ],
-        };
-    },
+    props: {
+        links: {
+            type: Array,
+            required: true,
+        }
+    }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+ .navbar {
+     a {
+         &:hover {
+             color: var(--second-color);
+         }
+     }
+ }
+</style>

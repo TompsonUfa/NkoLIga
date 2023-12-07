@@ -1,12 +1,11 @@
 <template>
     <main class="main">
         <section-home></section-home>
-        <section-about></section-about>
         <section-news></section-news>
+        <section-about></section-about>
         <section-team></section-team>
-        <section-project></section-project>
-        <section-smi></section-smi>>
     </main>
+
 </template>
 
 <script>
@@ -14,16 +13,13 @@ import SectionHome from "@/components/SectionHome.vue";
 import SectionAbout from "@/components/SectionAbout.vue";
 import SectionNews from "@/components/SectionNews.vue";
 import SectionTeam from "@/components/SectionTeam.vue";
-import SectionProject from "@/components/SectionProject.vue";
-import SectionSmi from "@/components/SectionSMI.vue";
+
 export default {
     components: {
         SectionHome,
         SectionAbout,
         SectionNews,
         SectionTeam,
-        SectionProject,
-        SectionSmi
     },
 };
 </script>
@@ -34,8 +30,7 @@ export default {
 }
 
 .section {
-    padding-top: var(--header-height);
-
+    padding: 50px 0;
     &__link {
         display: inline-block;
         background-color: #222;
@@ -58,7 +53,7 @@ export default {
         margin: 35px 0;
         display: inline-block;
         padding-bottom: 10px;
-        border-bottom: 3px solid var(--first-color);
+        border-bottom: 3px solid var(--second-color);
     }
 
     &__desc {
