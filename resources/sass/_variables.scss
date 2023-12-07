@@ -20,8 +20,8 @@ $line-height-base: 1.6;
 .h-40 {
     height: 40%;
 }
-html, body {
-    scroll-behavior: smooth;
+*, html {
+    scroll-behavior: smooth !important;
 }
 @media screen and (min-width: 992px) {
     .h-lg-100 {
