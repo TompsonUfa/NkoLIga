@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <auth-index></auth-index>
+    <admin-news></admin-news>
 @endsection
 
 @push('scripts')
-    @vite('resources/js/pages/login.js')
+    @vite('resources/js/pages/admin-news.js')
 @endpush
+
