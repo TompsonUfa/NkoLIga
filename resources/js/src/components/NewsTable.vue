@@ -23,7 +23,7 @@
                         <div @click="$emit('delete-item', item.id)" class="table__btn btn btn-delete">
                             <i class="bi bi-trash"></i>
                         </div>
-                        <a :href="''+ $route.name + '/' + item.id + '/edit'" class="table__btn btn btn-edit">
+                        <a :href="''+ $route.path + '/' + item.id + '/edit'" class="table__btn btn btn-edit">
                             <i class="bi bi-pencil"></i>
                         </a>
                     </div>

@@ -1,6 +1,8 @@
 <template>
     <app-header :class="{ scrolled: isScrolled }" :links="links"></app-header>
-    <router-view></router-view>
+    <main class="main">
+        <router-view></router-view>
+    </main>
     <app-footer :links="links"></app-footer>
 </template>
 
@@ -36,4 +38,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+    .main{
+        padding-top: var(--header-height);
+        min-height: 100vh;
+    }
 </style>

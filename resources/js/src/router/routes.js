@@ -1,8 +1,9 @@
 import PublicLayout from "@/layouts/PublicLayout.vue";
 import AdminLayout from "@/layouts/AdminLayout.vue";
 
-
 import Home from "@/pages/Home.vue";
+import NewsIndex from "@/pages/News/Index.vue";
+import ShowNews from "@/pages/News/Show.vue";
 import Auth from "@/pages/Auth.vue"
 import AdminNewsIndex from "@/pages/Admin/News/Index.vue";
 import AdminNewsCreate from "@/pages/Admin/News/Create.vue";
@@ -25,13 +26,35 @@ const routes = [
     {
         path: '/',
         component: PublicLayout,
+        meta: { breadcrumb: 'Главная'},
+        redirect: {name: 'home'},
         children: [
             {
                 path: '',
                 component: Home,
                 name: 'home',
-                meta: { breadcrumb: 'Главная'},
-            }
+                meta: { ignoreBreadcrumb: true },
+            },
+        ]
+    },
+    {
+        path: '/news',
+        component: PublicLayout,
+        meta: {breadcrumb: 'Новости'},
+        redirect: {name: 'news'},
+        children: [
+            {
+                path: '',
+                name: 'news',
+                component: NewsIndex,
+                meta: { ignoreBreadcrumb: true },
+            },
+            {
+                path: ':id',
+                name: 'showNews',
+                component: ShowNews,
+                meta: { ignoreBreadcrumb: true},
+            },
         ]
     },
     {
@@ -39,12 +62,12 @@ const routes = [
         component: AdminLayout,
         meta: { middleware: 'auth'},
         name: 'admin',
-        redirect: { name: 'news' },
+        redirect: { name: 'AdminNews' },
         children: [
             {
                 path: 'news',
                 component: AdminNewsIndex,
-                name: 'news',
+                name: 'AdminNews',
                 meta: { breadcrumb: 'Список новостей'},
             },
             {
@@ -99,7 +122,7 @@ const routes = [
                 path: 'contacts',
                 component: AdminContactsIndex,
                 name: 'contacts',
-                meta: { breadcrumb: 'Наша контакты'},
+                meta: { breadcrumb: 'Наши контакты'},
             },
         ]
     }

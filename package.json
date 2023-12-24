@@ -18,6 +18,10 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
+        "@fortawesome/fontawesome": "^1.1.8",
+        "@fortawesome/fontawesome-free": "^6.5.1",
+        "@fortawesome/fontawesome-free-brands": "^5.0.13",
+        "@fortawesome/fontawesome-free-solid": "^5.0.13",
         "@tiptap/pm": "^2.1.13",
         "@tiptap/starter-kit": "^2.1.13",
         "@tiptap/vue-3": "^2.1.13",
@@ -25,6 +29,7 @@
         "element-plus": "^2.4.3",
         "element-tiptap": "^2.2.1",
         "froala-editor": "^4.1.4",
+        "moment": "^2.29.4",
         "path": "^0.12.7",
         "remixicon": "^3.7.0",
         "vue-froala-wysiwyg": "^4.1.4",

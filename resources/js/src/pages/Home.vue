@@ -1,10 +1,8 @@
 <template>
-    <main class="main">
-        <section-home></section-home>
-        <section-news></section-news>
-        <section-about></section-about>
-        <section-team></section-team>
-    </main>
+    <section-home></section-home>
+    <section-news :news="news"></section-news>
+    <section-about :abouts="abouts" v-if="abouts.length"></section-about>
+    <section-team :team="team"></section-team>
 </template>
 
 <script>
@@ -12,17 +10,46 @@ import SectionTeam from "@/components/SectionTeam.vue";
 import SectionHome from "@/components/SectionHome.vue";
 import SectionAbout from "@/components/SectionAbout.vue";
 import SectionNews from "@/components/SectionNews.vue";
- export  default {
-     components: {SectionNews, SectionAbout, SectionHome, SectionTeam}
- }
+import axios from "axios";
+
+export default {
+    components: {SectionNews, SectionAbout, SectionHome, SectionTeam},
+    data() {
+        return {
+            news: [],
+            abouts: [],
+            team: [],
+        }
+    },
+    mounted() {
+        this.getData();
+    },
+    methods: {
+        getData() {
+            axios.get('/sanctum/csrf-cookie').then(response => {
+                axios.get('/get-data')
+                    .then(res => {
+                        const data = res.data;
+                        this.news = data.news;
+                        this.abouts = data.abouts;
+                        this.team = data.team;
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            })
+
+        }
+    }
+}
 </script>
 
 <style lang="scss">
-.main {
-    padding-top: var(--header-height);
-}
+
+
 .section {
     padding: 50px 0;
+
     &__link {
         display: inline-block;
         background-color: #222;

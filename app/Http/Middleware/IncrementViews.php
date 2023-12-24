@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Session;
+use App\Models\News;
+
+class IncrementViews
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     */
+    public function handle(Request $request, Closure $next, $key): Response
+    {
+        $news = $request->route('news');
+
+
+        $key = $key . "_" . $news->id;
+
+        if (!Session::has($key)) {
+
+            $news->increment('views');
+
+            Session::put($key, true);
+        }
+
+        return $next($request);
+    }
+}

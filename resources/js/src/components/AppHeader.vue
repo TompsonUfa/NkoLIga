@@ -1,5 +1,5 @@
 <template>
-    <header class="header fixed-top">
+    <header class="header fixed-top" :class="this.$route.name != 'home' ? 'header-border' : null">
         <app-nav :links="links"></app-nav>
     </header>
 </template>
@@ -15,7 +15,10 @@ export default {
             type: Array,
             required: true,
         }
-    }
+    },
+    mounted() {
+        console.log(this.$route.name)
+    },
 };
 </script>
 
@@ -30,7 +33,14 @@ export default {
 .scrolled {
     background-color: #000;
     a {
-        color: #fff;
+        color: #fff !important;
+        transition: .2s ease;
+        &:hover {
+            color: var(--second-color) !important;
+        }
     }
+}
+.header-border {
+    box-shadow: 0 2px 3px rgba(100, 100, 100, 0.1);
 }
 </style>

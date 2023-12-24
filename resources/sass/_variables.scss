@@ -7,18 +7,30 @@ $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 :root {
-    --header-height: 55px;
+    --header-height: 65px;
     --first-color: #000;
     --second-color: #F92D36;
     --dark-color: #38454d;
     --text-color: #cacaca;
 }
 
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1140px
+);
+
 .h-60 {
     height: 60%;
 }
 .h-40 {
     height: 40%;
+}
+.title {
+    text-transform: capitalize;
+    font-size: 20px;
 }
 *, html {
     scroll-behavior: smooth !important;

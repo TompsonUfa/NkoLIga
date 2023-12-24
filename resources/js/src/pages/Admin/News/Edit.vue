@@ -4,7 +4,7 @@
             <h1 class="title">Создание новости</h1>
         </div>
         <div class="col-12 mb-3">
-            <select-img :image="this.form.image" @select-image="(img) => {this.form.image = img}"></select-img>
+            <select-img :image="form.image" @select-image="(img) => {this.form.image = img}"></select-img>
         </div>
         <div class="col-12 mb-3">
             <div class="form-group">
@@ -14,6 +14,13 @@
         </div>
         <div class="col-12 mb-3">
             <div class="form-group">
+                <label class="form-label">Описание</label>
+                <input v-model="form.desc" type="text" class="form-control" id="desc">
+            </div>
+        </div>
+        <div class="col-12 mb-3">
+            <div class="form-group">
+                <label class="form-label">Содержимое</label>
                 <Editor v-model="form.content"/>
             </div>
         </div>
@@ -27,7 +34,7 @@
             </div>
         </div>
         <div class="col-12">
-            <button @click="updateNews" class="btn btn-primary">Создать</button>
+            <button @click="updateNews" class="btn btn-primary">Сохранить</button>
         </div>
     </div>
 </template>
@@ -51,6 +58,7 @@ export default {
             form: {
                 image: ref(''),
                 title: '',
+                desc: '',
                 content: '',
             },
             errors: [],
@@ -67,6 +75,7 @@ export default {
                     const news = res.data.data;
                     this.form.image = news.image;
                     this.form.title = news.title;
+                    this.form.desc = news.desc;
                     this.form.content = news.content;
                 })
                 .catch(err => {
@@ -78,6 +87,7 @@ export default {
 
             const formData = new FormData();
             formData.append('title', this.form.title);
+            formData.append('desc', this.form.desc);
             formData.append('content', this.form.content);
             formData.append('image', typeof this.form.image === 'object' ? this.form.image : '')
             formData.append("_method", "put");

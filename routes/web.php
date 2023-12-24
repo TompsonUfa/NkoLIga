@@ -1,24 +1,10 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-//use App\Http\Controllers\LoginController;
-//use App\Http\Controllers\NewsController;
 
+Route::get('/get-data', [HomeController::class, 'index']);
 Route::view('{any?}', 'app')->where('any', '.*');
 
 Auth::routes();
-
-//Route::view('/', 'home');
-//
-//Route::get('/login', [LoginController::class, 'index'])->name('login');
-//
-//Route::post('/login', [LoginController::class, 'authenticate'])->name('_login');
-//
-//Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
-//
-//    Route::redirect('', 'admin/news');
-//
-//    Route::resource('/news', NewsController::class);
-//
-//
-//});

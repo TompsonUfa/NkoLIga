@@ -14,6 +14,13 @@
         </div>
         <div class="col-12 mb-3">
             <div class="form-group">
+                <label class="form-label">Описание</label>
+                <input v-model="form.desc" type="text" class="form-control" id="desc">
+            </div>
+        </div>
+        <div class="col-12 mb-3">
+            <div class="form-group">
+                <label class="form-label">Содержимое</label>
                 <Editor v-model="form.content"/>
             </div>
         </div>
@@ -52,6 +59,7 @@ export default {
             form: {
                 image: ref(''),
                 title: '',
+                desc: '',
                 content: '',
             },
             errors: [],

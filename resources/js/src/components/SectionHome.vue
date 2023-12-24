@@ -6,7 +6,7 @@
                     <TypingText :words="this.words" class="home__title"
                         >Наша организация<br />занимается
                     </TypingText>
-                    <a href="#about" class="home__btn">
+                    <a href="#news" class="home__btn">
                         Изучить
                         <svg
                             version="1.1"

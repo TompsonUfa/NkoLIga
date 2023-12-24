@@ -10,7 +10,7 @@
                 <div class="col-12 col-lg-6 mb-4 team__item" v-for="item in team" :key="item.id">
                     <div class="row">
                         <div class="col-12 col-lg-6 team__view pb-3 pb-lg-0">
-                            <img class="team__img" :src="item.img" :alt="item.title">
+                            <img class="team__img" :src="item.image" :alt="item.title">
                         </div>
                         <div class="col-12 col-lg-6 team__content">
                             <h5 class="team__title">{{ item.title }}</h5>
@@ -28,35 +28,11 @@
 
 <script>
 export default {
-    data() {
-        return {
-            team: [
-                {
-                    id: 1,
-                    title: "Nina Scavo",
-                    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat",
-                    img: "/images/team/1.jpeg"
-                },
-                {
-                    id: 2,
-                    title: "Linda Kim",
-                    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat",
-                    img: "/images/team/2.jpeg"
-                },
-                {
-                    id: 3,
-                    title: "Di Dowson",
-                    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat",
-                    img: "/images/team/3.jpeg"
-                },
-                {
-                    id: 4,
-                    title: "Sofa Brown",
-                    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat",
-                    img: "/images/team/4.jpeg"
-                },
-            ],
-        };
+    props: {
+        team: {
+            required: true,
+            type: Array,
+        }
     }
 };
 </script>

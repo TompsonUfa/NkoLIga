@@ -23,6 +23,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
+            'desc' => 'required|string|max:255',
             'content' => 'required|string',
             'image' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
         ];

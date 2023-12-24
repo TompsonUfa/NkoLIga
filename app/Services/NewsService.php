@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\DB;
 
 class NewsService
 {
+    public function mainList()
+    {
+        return News::latest()->take(4)->get();
+    }
+
     public function getList($pagination, $perPage, $page)
     {
         $news = News::query();
@@ -18,7 +23,12 @@ class NewsService
         return $news->get();
     }
 
-    public function addNews($title, $content, $image)
+    public function getPopular($count)
+    {
+        return News::orderBy('views', 'desc')->take($count)->get();
+    }
+
+    public function addNews($title, $desc, $content, $image)
     {
         try {
             DB::beginTransaction();
@@ -27,6 +37,7 @@ class NewsService
 
             $news = new News();
             $news->title = $title;
+            $news->desc = $desc;
             $news->content = $content;
             $news->image = '/' . $path;
             $news->save();
@@ -40,29 +51,30 @@ class NewsService
         }
     }
 
-    public function updateNews($news, $title, $content, $image)
+    public function updateNews($news, $title, $desc, $content, $image)
     {
-            try {
-                DB::beginTransaction();
+        try {
+            DB::beginTransaction();
 
-                $news->title = $title;
-                $news->content = $content;
+            $news->title = $title;
+            $news->desc = $desc;
+            $news->content = $content;
 
-                if(!empty($image)){
-                    $path = $image->store('/uploads', 'public');
+            if (!empty($image)) {
+                $path = $image->store('/uploads', 'public');
 
-                    $news->image = '/' . $path;
-                }
-
-                $news->save();
-
-                DB::commit();
-
-                return response()->json(['success' => true, 'message' => "Новость обновлена."], 200);
-            } catch (\Exception $e) {
-                DB::rollBack();
-                return response()->json(['errors' => $e->getMessage()], 500);
+                $news->image = '/' . $path;
             }
+
+            $news->save();
+
+            DB::commit();
+
+            return response()->json(['success' => true, 'message' => "Новость обновлена."], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['errors' => $e->getMessage()], 500);
         }
+    }
 
 }
