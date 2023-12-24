@@ -1,17 +1,17 @@
 <template>
     <footer class="footer" id="contact">
         <div class="container d-flex justify-content-between">
-            <div class="footer__left">
-                <ul class="footer__contact contact">
-                    <h5 class="contact__title">Контакты</h5>
-                    <li class="contact__item">
-                        <a class="contact__link" href="tel:+89872495612">8 (777)-777-77-77</a>
-                    </li>
-                    <li class="contact__item">
-                        <a class="contact__link" href="mailto:ivc-bifk@yandex.ru">ivc-bifk@yandex.ru</a>
-                    </li>
-                </ul>
-            </div>
+<!--            <div class="footer__left">-->
+<!--                <ul class="footer__contact contact">-->
+<!--                    <h5 class="contact__title">Контакты</h5>-->
+<!--                    <li class="contact__item">-->
+<!--                        <a class="contact__link" href="tel:+89872495612"></a>-->
+<!--                    </li>-->
+<!--                    <li class="contact__item">-->
+<!--                        <a class="contact__link" href="mailto:ivc-bifk@yandex.ru"></a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </div>-->
             <div class="footer__right">
                 <div class="footer__company">
                     LIGA @ 2023
@@ -32,8 +32,11 @@ export default {
         links: {
             type: Array,
             required: true,
+        },
+        contact: {
+            required: true,
         }
-    }
+    },
 }
 </script>
 

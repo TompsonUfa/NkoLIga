@@ -30,21 +30,25 @@ class ContactService
 
     public function update($contact, $phone, $email, $address)
     {
-            try {
-                DB::beginTransaction();
+        try {
+            DB::beginTransaction();
 
-                $contact->phone = $phone;
-                $contact->email = $email;
-                $contact->address = $address;
-                $contact->save();
+            $contact->phone = $phone;
+            $contact->email = $email;
+            $contact->address = $address;
+            $contact->save();
 
-                DB::commit();
+            DB::commit();
 
-                return response()->json(['success' => true, 'message' => "Запись обновлена."], 200);
-            } catch (\Exception $e) {
-                DB::rollBack();
-                return response()->json(['errors' => $e->getMessage()], 500);
-            }
+            return response()->json(['success' => true, 'message' => "Запись обновлена."], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['errors' => $e->getMessage()], 500);
         }
+    }
 
+    public function getContact()
+    {
+        return Contact::first();
+    }
 }

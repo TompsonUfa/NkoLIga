@@ -9,6 +9,7 @@
 <script>
 import AppFooter from "@/components/AppFooter.vue";
 import AppHeader from "@/components/AppHeader.vue";
+import axios from "axios";
 export default {
     components: { AppHeader, AppFooter },
     data(){
@@ -20,6 +21,7 @@ export default {
                 { id: 3, name: "Команда", href: "#team" },
                 { id: 4, name: "Контакты", href: "#contact" },
             ],
+
         }
     },
     mounted() {
@@ -32,7 +34,7 @@ export default {
         handleScroll(){
             const scrollPosition = window.scrollY || window.pageYOffset;
             this.isScrolled = scrollPosition > '62';
-        }
+        },
     }
 }
 </script>

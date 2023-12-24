@@ -21,6 +21,7 @@ export default {
             news: [],
             abouts: [],
             team: [],
+            contact: [],
         }
     },
     mounted() {
@@ -35,6 +36,7 @@ export default {
                         this.news = data.news;
                         this.abouts = data.abouts;
                         this.team = data.team;
+                        this.contact = data.contact;
                     })
                     .catch(err => {
                         console.log(err)
