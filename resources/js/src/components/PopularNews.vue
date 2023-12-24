@@ -50,7 +50,7 @@
                                     </router-link>
                                 </h5>
                                 <p class="news__desc">
-                                    Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat sollicitudin ut est. In fringilla dui dui.
+                                   {{item.desc}}
                                 </p>
                             </div>
                         </div>

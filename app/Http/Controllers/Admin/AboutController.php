@@ -29,17 +29,19 @@ class AboutController extends Controller
     public function store(StoreRequest $request, AboutService $service)
     {
         $title = $request->input('title');
+        $desc = $request->input('desc');
         $image = $request->file('image');
 
-        return $service->add($title, $image);
+        return $service->add($title,$desc, $image);
     }
 
     public function update(About $about, UpdateRequest $request, AboutService $service)
     {
         $title = $request->input('title');
+        $desc = $request->input('desc');
         $image = $request->file('image');
 
-        return $service->update($about, $title, $image);
+        return $service->update($about, $title, $desc, $image);
 
     }
 

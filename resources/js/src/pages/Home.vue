@@ -2,6 +2,7 @@
     <section-home></section-home>
     <section-news :news="news"></section-news>
     <section-about :abouts="abouts" v-if="abouts.length"></section-about>
+    <section-statistic></section-statistic>
     <section-team :team="team"></section-team>
 </template>
 
@@ -11,9 +12,10 @@ import SectionHome from "@/components/SectionHome.vue";
 import SectionAbout from "@/components/SectionAbout.vue";
 import SectionNews from "@/components/SectionNews.vue";
 import axios from "axios";
+import SectionStatistic from "@/components/SectionStatistic.vue";
 
 export default {
-    components: {SectionNews, SectionAbout, SectionHome, SectionTeam},
+    components: {SectionStatistic, SectionNews, SectionAbout, SectionHome, SectionTeam},
     data() {
         return {
             news: [],
@@ -45,8 +47,6 @@ export default {
 </script>
 
 <style lang="scss">
-
-
 .section {
     padding: 50px 0;
 
@@ -69,16 +69,18 @@ export default {
     }
 
     &__title {
-        margin: 35px 0;
+        margin: 20px 0;
         display: inline-block;
         padding-bottom: 10px;
         border-bottom: 3px solid var(--second-color);
     }
 
     &__desc {
-        font-size: 18px;
-        margin-bottom: 35px;
-        font-weight: 600;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 24px;
+        margin-bottom: 30px;
+        color: #666;
 
         span {
             color: var(--second-color);

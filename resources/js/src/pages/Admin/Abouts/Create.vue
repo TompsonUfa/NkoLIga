@@ -12,6 +12,12 @@
                 <input v-model="form.title" type="text" class="form-control" id="title">
             </div>
         </div>
+        <div class="col-12 mb-3">
+            <div class="form-group">
+                <label class="form-label">Описание</label>
+                <input v-model="form.desc" type="text" class="form-control" id="desc">
+            </div>
+        </div>
         <div class="col-12" v-if="this.errors.length > 0">
             <div class="alert alert-danger" role="alert">
                 <ul class="errors">
@@ -47,6 +53,7 @@ export default {
             form: {
                 image: ref(''),
                 title: '',
+                desc: '',
             },
             errors: [],
         }

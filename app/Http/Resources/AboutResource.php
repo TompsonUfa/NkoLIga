@@ -17,6 +17,7 @@ class AboutResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'desc' => $this->desc,
             'image' => $this->image,
         ];
     }

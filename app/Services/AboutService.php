@@ -18,7 +18,7 @@ class AboutService
         return $about->get();
     }
 
-    public function add($title, $image)
+    public function add($title,$desc, $image)
     {
         try {
             DB::beginTransaction();
@@ -27,6 +27,7 @@ class AboutService
 
             $about = new About();
             $about->title = $title;
+            $about->desc = $desc;
             $about->image = '/' . $path;
             $about->save();
 
@@ -39,13 +40,13 @@ class AboutService
         }
     }
 
-    public function update($about, $title, $image)
+    public function update($about, $title, $desc, $image)
     {
             try {
                 DB::beginTransaction();
 
                 $about->title = $title;
-
+                $about->desc = $desc;
                 if(!empty($image)){
                     $path = $image->store('/uploads', 'public');
 

@@ -12,6 +12,12 @@
                 <input v-model="form.title" type="text" class="form-control" id="title">
             </div>
         </div>
+        <div class="col-12 mb-3">
+            <div class="form-group">
+                <label class="form-label">Описание</label>
+                <input v-model="form.desc" type="text" class="form-control" id="desc">
+            </div>
+        </div>
         <div class="col-12" v-if="this.errors.length > 0">
             <div class="alert alert-danger" role="alert">
                 <ul class="errors">
@@ -46,6 +52,7 @@ export default {
             form: {
                 image: ref(''),
                 title: '',
+                desc: '',
             },
             errors: [],
         }
@@ -61,6 +68,7 @@ export default {
                     const item = res.data.data;
                     this.form.image = item.image;
                     this.form.title = item.title;
+                    this.form.desc = item.desc;
                 })
                 .catch(err => {
                     console.log(err)
@@ -71,6 +79,7 @@ export default {
 
             const formData = new FormData();
             formData.append('title', this.form.title);
+            formData.append('desc', this.form.desc);
             formData.append('image', typeof this.form.image === 'object' ? this.form.image : '')
             formData.append("_method", "put");
 
