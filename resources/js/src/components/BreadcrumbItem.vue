@@ -1,6 +1,6 @@
 <template>
     <li>
-        <router-link  :to=this.to>
+        <router-link :to=this.to>
             <slot></slot>
         </router-link>
     </li>

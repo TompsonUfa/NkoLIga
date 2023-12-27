@@ -1,8 +1,9 @@
 <template>
     <section-home></section-home>
     <section-news :news="news"></section-news>
-    <section-about :abouts="abouts" v-if="abouts.length"></section-about>
     <section-statistic></section-statistic>
+    <section-about :abouts="abouts" v-if="abouts.length"></section-about>
+    <section-feedback></section-feedback>
     <section-team :team="team"></section-team>
 </template>
 
@@ -11,11 +12,12 @@ import SectionTeam from "@/components/SectionTeam.vue";
 import SectionHome from "@/components/SectionHome.vue";
 import SectionAbout from "@/components/SectionAbout.vue";
 import SectionNews from "@/components/SectionNews.vue";
+import SectionFeedback from "@/components/SectionFeedback.vue";
 import axios from "axios";
 import SectionStatistic from "@/components/SectionStatistic.vue";
 
 export default {
-    components: {SectionStatistic, SectionNews, SectionAbout, SectionHome, SectionTeam},
+    components: {SectionFeedback, SectionStatistic, SectionNews, SectionAbout, SectionHome, SectionTeam},
     data() {
         return {
             news: [],

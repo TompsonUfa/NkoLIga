@@ -40,20 +40,19 @@ const routes = [
     {
         path: '/news',
         component: PublicLayout,
-        meta: {breadcrumb: 'Новости'},
         redirect: {name: 'news'},
+        meta: { breadcrumb: 'Новости' },
         children: [
             {
                 path: '',
                 name: 'news',
                 component: NewsIndex,
-                meta: { ignoreBreadcrumb: true },
             },
             {
                 path: ':id',
                 name: 'showNews',
                 component: ShowNews,
-                meta: { ignoreBreadcrumb: true},
+                meta: { breadcrumb: 'запись'},
             },
         ]
     },

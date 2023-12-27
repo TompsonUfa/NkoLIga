@@ -4,7 +4,8 @@
                 <i class="fa-solid fa-house-chimney"></i>
                 Главная
             </breadcrumb-item>
-            <breadcrumb-item v-for="(breadcrumb, idx) in breadcrumbList" :key="idx" class="breadcrumb__item" :to=breadcrumb.path>
+            <breadcrumb-item  :key="idx"
+                             class="breadcrumb__item" :to=breadcrumb.path>
                {{breadcrumb.meta.breadcrumb}}
             </breadcrumb-item>
         </ul>
@@ -17,7 +18,7 @@ export default {
     components: {BreadcrumbItem},
     data() {
         return {
-            breadcrumbList: [],
+            breadcrumb: [],
         }
     },
     created() {
@@ -30,8 +31,8 @@ export default {
     },
     methods: {
         getRoute() {
-            this.breadcrumbList = this.$route.matched.filter(route => !route.meta.ignoreBreadcrumb);
-            console.log(this.breadcrumbList)
+            this.breadcrumb = this.$route;
+            console.log(this.$route)
         }
     },
 }

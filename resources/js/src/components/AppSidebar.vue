@@ -28,6 +28,7 @@
 <style scoped lang="scss">
     .sidebar {
         position: fixed;
+        width: 300px;
         max-width: 300px;
         height: 100vh;
         background-color: #000;

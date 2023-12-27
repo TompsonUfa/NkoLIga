@@ -36,6 +36,6 @@
 
 <style scoped lang="scss">
     .main {
-        padding: 50px 0;
+        padding: 50px 0 50px 300px;
     }
 </style>
