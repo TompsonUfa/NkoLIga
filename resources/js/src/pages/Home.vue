@@ -1,8 +1,8 @@
 <template>
     <section-home></section-home>
-    <section-news :news="news"></section-news>
-    <section-statistic></section-statistic>
     <section-about :abouts="abouts" v-if="abouts.length"></section-about>
+    <section-statistic></section-statistic>
+    <section-news :news="news"></section-news>
     <section-feedback></section-feedback>
     <section-team :team="team"></section-team>
 </template>

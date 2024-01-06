@@ -33,15 +33,12 @@ export default {
     methods: {
         handleScroll(){
             const scrollPosition = window.scrollY || window.pageYOffset;
-            this.isScrolled = scrollPosition > '62';
+            this.isScrolled = scrollPosition > '0';
         },
     }
 }
 </script>
 
 <style scoped lang="scss">
-    .main{
-        padding-top: var(--header-height);
-        min-height: 100vh;
-    }
+
 </style>

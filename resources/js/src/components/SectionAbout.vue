@@ -4,10 +4,6 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <h2 class="section__title">О нас</h2>
-                    <p class="section__desc">
-                        Lorem Ipsum is simply dummy text the printing and typesetting industry.<br>
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    </p>
                 </div>
             </div>
             <div class="row">
