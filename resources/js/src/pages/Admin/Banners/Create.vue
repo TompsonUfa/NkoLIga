@@ -1,16 +1,10 @@
 <template>
     <div class="row">
         <div class="col-12 mb-2">
-            <h1 class="title">Создание новости</h1>
+            <h1 class="title">Создание баннера</h1>
         </div>
         <div class="col-12 mb-3">
             <select-img @select-image="(img) => {this.form.image = img}"></select-img>
-        </div>
-        <div class="col-12 mb-3">
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" v-model="form.onMainScreen">
-                <label class="form-check-label" for="flexSwitchCheckChecked">Вывести на главный экран</label>
-            </div>
         </div>
         <div class="col-12 mb-3">
             <div class="form-group">
@@ -22,12 +16,6 @@
             <div class="form-group">
                 <label class="form-label">Описание</label>
                 <input v-model="form.desc" type="text" class="form-control" id="desc">
-            </div>
-        </div>
-        <div class="col-12 mb-3">
-            <div class="form-group">
-                <label class="form-label">Содержимое</label>
-                <Editor v-model="form.content"/>
             </div>
         </div>
         <div class="col-12" v-if="this.errors.length > 0">
@@ -63,11 +51,9 @@ export default {
     data() {
         return {
             form: {
-                onMainScreen: false,
                 image: ref(''),
                 title: '',
                 desc: '',
-                content: '',
             },
             errors: [],
         }
@@ -75,13 +61,13 @@ export default {
     methods: {
         createNews() {
             this.errors = [];
-            axios.post('/api/admin/news', this.form, {
+            axios.post('/api/admin/banners', this.form, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             })
                 .then((res) => {
-                   this.$router.push('/admin');
+                   this.$router.push('/admin/banners');
                 })
                 .catch((err) => {
                     if (err.response && err.response.status === 422) {

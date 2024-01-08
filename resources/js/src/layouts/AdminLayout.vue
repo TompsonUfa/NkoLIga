@@ -17,16 +17,19 @@
             return {
                 links: [
                     {
-                        id: 1, name: 'Новости', value: '/admin/news'
+                        id: 1, name: 'Баннеры', value: '/admin/banners'
                     },
                     {
-                        id: 2, name: 'О нас', value: '/admin/abouts'
+                        id: 2, name: 'Новости', value: '/admin/news'
                     },
                     {
-                        id: 3, name: 'Команда', value: '/admin/team'
+                        id: 3, name: 'О нас', value: '/admin/abouts'
                     },
                     {
-                        id: 4, name: 'Контакты', value: '/admin/contacts'
+                        id: 4, name: 'Команда', value: '/admin/team'
+                    },
+                    {
+                        id: 5, name: 'Контакты', value: '/admin/contacts'
                     },
                 ]
             }

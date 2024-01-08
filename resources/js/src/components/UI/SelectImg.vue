@@ -56,7 +56,7 @@ export default {
 
 <style lang="scss">
 .select-img {
-    width: 500px;
+    width: 100%;
     height: 350px;
     cursor: pointer;
     background-color: rgba(0,0,0,.5);

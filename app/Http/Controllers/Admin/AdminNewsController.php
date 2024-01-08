@@ -27,12 +27,14 @@ class AdminNewsController extends Controller
 
     public function store(StoreRequest $request, NewsService $service)
     {
+
         $title = $request->input('title');
         $desc = $request->input('desc');
         $content = $request->input('content');
         $image = $request->file('image');
+        $onMainScreen = $request->boolean('onMainScreen');
 
-        return $service->addNews($title, $desc, $content, $image);
+        return $service->addNews($title, $desc, $content, $image, $onMainScreen);
     }
 
     public function update(News $news, Request $request, NewsService $service)
@@ -41,8 +43,9 @@ class AdminNewsController extends Controller
         $desc = $request->input('desc');
         $content = $request->input('content');
         $image = $request->file('image');
+        $onMainScreen = $request->boolean('onMainScreen');
 
-        return $service->updateNews($news, $title, $desc, $content, $image);
+        return $service->updateNews($news, $title, $desc, $content, $image, $onMainScreen);
 
     }
 

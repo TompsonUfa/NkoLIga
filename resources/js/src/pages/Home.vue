@@ -1,5 +1,5 @@
 <template>
-    <section-home></section-home>
+    <section-home v-if="this.banners" :banners="this.banners"></section-home>
     <section-about :abouts="abouts" v-if="abouts.length"></section-about>
     <section-statistic></section-statistic>
     <section-news :news="news"></section-news>
@@ -20,6 +20,7 @@ export default {
     components: {SectionFeedback, SectionStatistic, SectionNews, SectionAbout, SectionHome, SectionTeam},
     data() {
         return {
+            banners: [],
             news: [],
             abouts: [],
             team: [],
@@ -39,6 +40,7 @@ export default {
                         this.abouts = data.abouts;
                         this.team = data.team;
                         this.contact = data.contact;
+                        this.banners = data.banners;
                     })
                     .catch(err => {
                         console.log(err)

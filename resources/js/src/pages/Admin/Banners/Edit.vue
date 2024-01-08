@@ -1,16 +1,10 @@
 <template>
     <div class="row">
         <div class="col-12 mb-2">
-            <h1 class="title">Создание новости</h1>
+            <h1 class="title">Редактирование баннера</h1>
         </div>
         <div class="col-12 mb-3">
             <select-img :image="form.image" @select-image="(img) => {this.form.image = img}"></select-img>
-        </div>
-        <div class="col-12 mb-3">
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" v-model="form.onMainScreen">
-                <label class="form-check-label" for="flexSwitchCheckChecked">Вывести на главный экран</label>
-            </div>
         </div>
         <div class="col-12 mb-3">
             <div class="form-group">
@@ -22,12 +16,6 @@
             <div class="form-group">
                 <label class="form-label">Описание</label>
                 <input v-model="form.desc" type="text" class="form-control" id="desc">
-            </div>
-        </div>
-        <div class="col-12 mb-3">
-            <div class="form-group">
-                <label class="form-label">Содержимое</label>
-                <Editor v-model="form.content"/>
             </div>
         </div>
         <div class="col-12" v-if="this.errors.length > 0">
@@ -60,32 +48,27 @@ export default {
     },
     data() {
         return {
-            newsId: ref(),
+            id: ref(),
             form: {
-                onMainScreen: false,
                 image: ref(''),
                 title: '',
                 desc: '',
-                content: '',
             },
             errors: [],
         }
     },
     mounted() {
-        this.newsId = this.$route.params.news;
-        this.getNews(this.newsId);
+        this.id = this.$route.params.banner;
+        this.getNews(this.id);
     },
     methods: {
         getNews(id) {
-            axios.get(`/api/admin/news/${id}`)
+            axios.get(`/api/admin/banners/${id}`)
                 .then(res => {
-                    console.log(res.data)
                     const news = res.data.data;
                     this.form.image = news.image;
                     this.form.title = news.title;
                     this.form.desc = news.desc;
-                    this.form.content = news.content;
-                    this.form.onMainScreen = !!news.on_main_screen;
                 })
                 .catch(err => {
                     console.log(err)
@@ -97,18 +80,16 @@ export default {
             const formData = new FormData();
             formData.append('title', this.form.title);
             formData.append('desc', this.form.desc);
-            formData.append('content', this.form.content);
             formData.append('image', typeof this.form.image === 'object' ? this.form.image : '')
-            formData.append('onMainScreen', this.form.onMainScreen)
             formData.append("_method", "put");
 
-            axios.post(`/api/admin/news/${this.newsId}`, formData ,{
+            axios.post(`/api/admin/banners/${this.id}`, formData ,{
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             })
                 .then((res) => {
-                    this.$router.push('/admin');
+                    this.$router.push('/admin/banners');
                 })
                 .catch((err) => {
                     if (err.response && err.response.status === 422) {

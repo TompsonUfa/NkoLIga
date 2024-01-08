@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\NewsController;
-
+use App\Http\Controllers\Admin\BannerController;
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -15,6 +15,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => 'auth:sanctum' , 'prefix' => 'admin', 'name' => 'admin.'], function (){
+
+    Route::apiResource('banners', BannerController::class);
 
     Route::apiResource('news', AdminNewsController::class);
 

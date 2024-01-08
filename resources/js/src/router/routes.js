@@ -5,6 +5,9 @@ import Home from "@/pages/Home.vue";
 import NewsIndex from "@/pages/News/Index.vue";
 import ShowNews from "@/pages/News/Show.vue";
 import Auth from "@/pages/Auth.vue"
+import AdminBannersIndex from "@/pages/Admin/Banners/Index.vue";
+import AdminBannersCreate from "@/pages/Admin/Banners/Create.vue";
+import AdminBannersEdit from "@/pages/Admin/Banners/Edit.vue";
 import AdminNewsIndex from "@/pages/Admin/News/Index.vue";
 import AdminNewsCreate from "@/pages/Admin/News/Create.vue";
 import AdminNewsEdit from "@/pages/Admin/News/Edit.vue";
@@ -63,6 +66,24 @@ const routes = [
         name: 'admin',
         redirect: { name: 'AdminNews' },
         children: [
+            {
+                path: 'banners',
+                component: AdminBannersIndex,
+                name: 'AdminBanners',
+                meta: { breadcrumb: 'Список банеров'},
+            },
+            {
+                path: 'banners/create',
+                component: AdminBannersCreate,
+                name: 'createBanner',
+                meta: { breadcrumb: 'Создать банер'},
+            },
+            {
+                path: 'banners/:banner/edit',
+                component: AdminBannersEdit,
+                name: 'editBanner',
+                meta: { breadcrumb: 'Редактировать банер'},
+            },
             {
                 path: 'news',
                 component: AdminNewsIndex,

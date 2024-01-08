@@ -28,7 +28,12 @@ class NewsService
         return News::orderBy('views', 'desc')->take($count)->get();
     }
 
-    public function addNews($title, $desc, $content, $image)
+    public function getListForMain()
+    {
+        return News::where('on_main_screen', 1)->select('id', 'title', 'desc', 'image', 'on_main_screen')->get();
+    }
+
+    public function addNews($title, $desc, $content, $image, $onMainScreen)
     {
         try {
             DB::beginTransaction();
@@ -40,6 +45,7 @@ class NewsService
             $news->desc = $desc;
             $news->content = $content;
             $news->image = '/' . $path;
+            $news->on_main_screen = $onMainScreen;
             $news->save();
 
             DB::commit();
@@ -51,7 +57,7 @@ class NewsService
         }
     }
 
-    public function updateNews($news, $title, $desc, $content, $image)
+    public function updateNews($news, $title, $desc, $content, $image, $onMainScreen)
     {
         try {
             DB::beginTransaction();
@@ -59,6 +65,7 @@ class NewsService
             $news->title = $title;
             $news->desc = $desc;
             $news->content = $content;
+            $news->on_main_screen = $onMainScreen;
 
             if (!empty($image)) {
                 $path = $image->store('/uploads', 'public');

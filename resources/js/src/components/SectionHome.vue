@@ -1,10 +1,6 @@
 <template>
     <section class="section section__home home" id="home">
-        <div class="row align-items-center">
-            <div class="col-12">
-                <main-slider :items="this.slides"></main-slider>
-            </div>
-        </div>
+        <main-slider v-if="this.banners" :items="this.banners"></main-slider>
     </section>
 </template>
 
@@ -15,36 +11,18 @@ export default {
     components: {
         MainSlider
     },
-    data() {
-        return {
-            slides: [
-                {
-                    id: 1,
-                    img: "/images/1.jpg",
-                    title: 'slide 1',
-                    desc: 'desc',
-                },
-                {
-                    id: 2,
-                    img: "/images/2.png",
-                    title: 'slide 2',
-                    desc: 'desc',
-                },
-                {
-                    id: 3,
-                    img: "/images/2.png",
-                    title: 'slide 3',
-                    desc: 'desc',
-                }
-            ]
-        };
-    },
+    props: {
+        banners: {
+            type: Array,
+        }
+    }
 };
 </script>
 
 <style lang="scss">
 .home {
     padding: 0 !important;
+
     &__btn {
         display: inline-block;
         border-radius: 5px;
@@ -57,6 +35,7 @@ export default {
         color: #fff;
         font-weight: bold;
         text-decoration: none;
+
         &:hover {
             background-color: var(--second-color);
             opacity: 0.7;
