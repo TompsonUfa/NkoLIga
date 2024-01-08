@@ -3,7 +3,7 @@
     <section-about :abouts="abouts" v-if="abouts.length"></section-about>
     <section-statistic></section-statistic>
     <section-news :news="news"></section-news>
-    <section-feedback></section-feedback>
+    <section-contact :contact="this.contact"></section-contact>
     <section-team :team="team"></section-team>
 </template>
 
@@ -12,12 +12,12 @@ import SectionTeam from "@/components/SectionTeam.vue";
 import SectionHome from "@/components/SectionHome.vue";
 import SectionAbout from "@/components/SectionAbout.vue";
 import SectionNews from "@/components/SectionNews.vue";
-import SectionFeedback from "@/components/SectionFeedback.vue";
 import axios from "axios";
 import SectionStatistic from "@/components/SectionStatistic.vue";
+import SectionContact from "@/components/SectionContact.vue";
 
 export default {
-    components: {SectionFeedback, SectionStatistic, SectionNews, SectionAbout, SectionHome, SectionTeam},
+    components: {SectionContact, SectionStatistic, SectionNews, SectionAbout, SectionHome, SectionTeam},
     data() {
         return {
             banners: [],

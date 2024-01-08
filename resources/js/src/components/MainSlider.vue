@@ -85,7 +85,7 @@ export default {
 
 <style lang="scss">
 .main-slider {
-    padding-top: var(--header-height);
+
 
     &__item {
         position: relative;

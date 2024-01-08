@@ -40,5 +40,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+    .main {
+        padding-top: var(--header-height);
+    }
 </style>
