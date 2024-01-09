@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import PublicLayout from "@/layouts/PublicLayout.vue";
 import AdminLayout from "@/layouts/AdminLayout.vue";
 
@@ -55,7 +57,18 @@ const routes = [
                 path: ':id',
                 name: 'showNews',
                 component: ShowNews,
-                meta: { breadcrumb: 'запись'},
+                meta: {
+                    breadcrumb: async (route) => {
+                        try {
+                            const response = await axios.get(`/api/news/${route.params.id}`);
+                            const title = response.data.data.title;
+                            return title || 'Запись';
+                        } catch (error) {
+                            console.error('Error fetching title from the database:', error);
+                            return 'Запись';
+                        }
+                    }
+                },
             },
         ]
     },

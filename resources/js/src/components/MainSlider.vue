@@ -5,7 +5,7 @@
                 <img class="main-slider__img" :src="banner.image" :alt="banner.title">
             </div>
             <div class="main-slider__content">
-                <div class="container">
+                <div class="container text-center">
                     <h1 class="main-slider__title">
                         {{ banner.title }}
                     </h1>
@@ -18,7 +18,10 @@
                         </a>
                     </template>
                     <template v-else>
-                        <a href="#about" class="main-slider__btn">Перейти</a>
+                        <div class="d-flex gap-3">
+                            <a href="#about" class="main-slider__btn">Узнать</a>
+                            <a href="#contact" class="main-slider__btn">Контакты</a>
+                        </div>
                     </template>
                 </div>
             </div>
@@ -62,7 +65,7 @@ export default {
                     '<button class="slider__btn slider__btn_next"><svg width="64px" height="64px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="#000000"></path></g></svg></button>',
                 slidesToShow: 1,
                 slidesToScroll: 1,
-                autoplay: true,
+                autoplay: false,
                 arrows: false,
                 autoplaySpeed: 2000,
                 responsive: [
@@ -85,7 +88,6 @@ export default {
 
 <style lang="scss">
 .main-slider {
-
 
     &__item {
         position: relative;
@@ -198,6 +200,20 @@ export default {
         background-color: var(--second-color);
         color: #fff;
         border-radius: 5px;
+    }
+
+    .slick-active {
+        .main-slider__img {
+            animation: kbrns_zoomInOut 15s linear 0s infinite alternate;
+        }
+    }
+}
+@keyframes kbrns_zoomInOut {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
     }
 }
 </style>

@@ -5,8 +5,8 @@
                 Главная
             </breadcrumb-item>
             <breadcrumb-item  :key="idx"
-                             class="breadcrumb__item" :to=breadcrumb.path>
-               {{breadcrumb.meta.breadcrumb}}
+                             class="breadcrumb__item" v-for="(item, idx) in this.breadcrumb" :to=item.to>
+               {{item.text}}
             </breadcrumb-item>
         </ul>
 </template>
@@ -30,9 +30,32 @@ export default {
         }
     },
     methods: {
-        getRoute() {
-            this.breadcrumb = this.$route;
-            console.log(this.$route)
+        async getRoute() {
+            try {
+                let pathArray = this.$route.path.split("/");
+                pathArray.shift();
+
+                let breadcrumbs = await pathArray.reduce(async (breadcrumbArray, path, idx) => {
+                    let matchedRoute = this.$route.matched[idx];
+                    const label = typeof matchedRoute.meta.breadcrumb === 'function'
+                        ? await matchedRoute.meta.breadcrumb(this.$route)
+                        : matchedRoute.meta.breadcrumb || path;
+
+                    (await breadcrumbArray).push({
+                        path: path,
+                        to: (await breadcrumbArray)[idx - 1]
+                            ? "/" + (await breadcrumbArray)[idx - 1].path + "/" + path
+                            : "/" + path,
+                        text: label,
+                    });
+
+                    return breadcrumbArray;
+                }, Promise.resolve([]));
+
+                this.breadcrumb = breadcrumbs;
+            } catch (error) {
+                console.error('Error in getRoute:', error);
+            }
         }
     },
 }
@@ -50,7 +73,7 @@ export default {
             font-weight: 600;
             text-transform: capitalize;
             font-family: Montserrat, sans-serif;
-            .active  {
+            .router-link-exact-active  {
                 color: var(--second-color);
             }
             &::after{

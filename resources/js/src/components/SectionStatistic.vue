@@ -208,4 +208,25 @@ export default {
         color: #666;
     }
 }
+
+@media (max-width: 1000px) {
+    .statistic {
+        padding: 50px 10px !important;
+        &:before, &:after {
+            height: 100%;
+        }
+    }
+    .counters {
+        &__item {
+            padding: 20px 15px;
+            margin-bottom: 10px;
+        }
+        i {
+            font-size: 40px;
+        }
+        &__title {
+            font-size: 35px;
+        }
+    }
+}
 </style>

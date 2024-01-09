@@ -20,9 +20,6 @@
                     aria-labelledby="offcanvasDarkNavbarLabel"
                 >
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">
-                            Dark offcanvas
-                        </h5>
                         <button
                             type="button"
                             class="btn-close btn-close-white"
@@ -69,6 +66,18 @@ export default {
     .navbar-brand {
         font-weight: 700;
         letter-spacing: 1px;
+    }
+    .navbar-toggler{
+        border: transparent;
+        box-shadow: none;
+    }
+    .show  {
+
+        background-color: #000 !important;
+        a {
+            color: #fff
+        }
+
     }
 }
 </style>
