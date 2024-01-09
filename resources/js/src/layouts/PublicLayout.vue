@@ -16,10 +16,10 @@ export default {
         return {
             isScrolled: false,
             links: [
-                { id: 1, name: "Новости", href: "#news" },
-                { id: 2, name: "О нас", href: "#about" },
-                { id: 3, name: "Команда", href: "#team" },
-                { id: 4, name: "Контакты", href: "#contact" },
+                { id: 1, name: "О нас", href: "#about" },
+                { id: 2, name: "Новости", href: "#news" },
+                { id: 3, name: "Контакты", href: "#contact" },
+                { id: 4, name: "Команда", href: "#team" },
             ],
 
         }
