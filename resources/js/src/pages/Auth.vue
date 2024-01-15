@@ -2,7 +2,7 @@
     <main class="wrap-auth">
         <div class="auth">
             <div class="auth__img">
-                <img src="/images/auth.jpg" alt="Авторизация" />
+                <img src="/public/images/auth.jpg" alt="Авторизация" />
             </div>
             <div class="auth__form">
                 <h3 class="auth__title">Авторизация</h3>
