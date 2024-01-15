@@ -71,13 +71,19 @@ export default {
         border: transparent;
         box-shadow: none;
     }
-    .show  {
+    .offcanvas-header{
+        justify-content: end !important;
+    }
 
-        background-color: #000 !important;
-        a {
-            color: #fff
+
+    @media screen and (max-width: 991px) {
+        .offcanvas  {
+            background-color: #000 !important;
+            a {
+                font-size: 20px;
+                color: #fff
+            }
         }
-
     }
 }
 </style>

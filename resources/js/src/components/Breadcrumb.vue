@@ -63,10 +63,10 @@ export default {
 
 <style lang="scss">
     .breadcrumb {
-        list-style: none;
-        margin: 0;
-        padding: 15px;
-        background-color: #f8f9fa;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 15px !important;
+        background-color: #f8f9fa !important;
         &__item {
             display: flex;
             font-size: 14px;

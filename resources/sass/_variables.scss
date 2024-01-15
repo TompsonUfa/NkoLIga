@@ -19,8 +19,10 @@ $container-max-widths: (
     md: 720px,
     lg: 960px,
     xl: 1140px,
-    xxl: 1140px
+    xxl: 1150px,
 );
+
+$navbar-dark-color: #000;
 
 .h-60 {
     height: 60%;
@@ -45,3 +47,4 @@ $container-max-widths: (
         height: 100% !important;
     }
 }
+

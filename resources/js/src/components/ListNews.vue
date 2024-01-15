@@ -36,7 +36,7 @@
 
 <script>
     import moment from "moment/moment.js";
-
+    import 'moment/locale/ru';
     export default {
         name: "ListNews",
         props: {
