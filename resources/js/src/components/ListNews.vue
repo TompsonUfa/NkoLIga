@@ -2,7 +2,7 @@
     <div class="news">
         <div v-for="(item, idx) in news" :key="idx" class="news__item">
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-5 mb-2 mb-md-0">
                     <div class="news__prev">
                         <router-link :to="'news/'+ item.id" class="news__link">
                             <img :src="item.image" :alt="item.title" class="news__img w-100">
@@ -122,6 +122,7 @@
             line-height: 24px;
             font-size: 14px;
             text-align: left;
+            margin-bottom: 0;
         }
     }
 </style>

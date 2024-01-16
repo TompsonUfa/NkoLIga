@@ -10,7 +10,7 @@
                             </router-link>
                         </div>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8 mt-3 mt-md-0">
                         <div class="news__content">
                             <div class="news__meta mb-2">
                                 {{formatDate(item.created_at)}}
@@ -149,6 +149,16 @@
             line-height: 24px;
             font-size: 14px;
             text-align: left;
+        }
+    }
+    @media screen and (max-width: 767px) {
+        .news {
+            &__prev{
+                height: 230px;
+                img {
+                    height: 100%;
+                }
+            }
         }
     }
 </style>

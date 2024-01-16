@@ -10,7 +10,7 @@
                 <h3 class="title">Новости</h3>
                 <list-news :news="news"/>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 mt-4 mt-md-0">
                 <h3 class="title">Самые просматриваемые</h3>
                 <popular-news :news="popularNews"/>
             </div>
