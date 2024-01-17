@@ -64,7 +64,7 @@ export default {
         z-index: 1;
         background: #fff;
         &::before{
-            background: url('/public/images/static.jpg') no-repeat;
+            background: url('/public/images/static2.jpg') no-repeat;
             background-position: center;
             background-attachment: fixed;
             background-size: cover;

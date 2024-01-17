@@ -119,7 +119,7 @@ export default {
     background: #fff;
 
     &::before {
-        background: url('/public/images/static.jpg') no-repeat;
+        background: url('/public/images/static1.jpg') no-repeat;
         background-position: center;
         background-attachment: fixed;
         background-size: cover;

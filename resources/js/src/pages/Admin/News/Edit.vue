@@ -1,60 +1,63 @@
 <template>
-    <div class="row">
-        <div class="col-12 mb-2">
-            <h1 class="title">Создание новости</h1>
-        </div>
-        <div class="col-12 mb-3">
-            <select-img :image="form.image" @select-image="(img) => {this.form.image = img}"></select-img>
-        </div>
-        <div class="col-12 mb-3">
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" v-model="form.onMainScreen">
-                <label class="form-check-label" for="flexSwitchCheckChecked">Вывести на главный экран</label>
+    <app-loader v-if="this.loading"></app-loader>
+    <template v-else>
+        <div class="row">
+            <div class="col-12 mb-2">
+                <h1 class="title">Создание новости</h1>
+            </div>
+            <div class="col-12 mb-3">
+                <select-img :image="form.image" @select-image="(img) => {this.form.image = img}"></select-img>
+            </div>
+            <div class="col-12 mb-3">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" v-model="form.onMainScreen">
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Вывести на главный экран</label>
+                </div>
+            </div>
+            <div class="col-12 mb-3">
+                <div class="form-group">
+                    <label class="form-label">Название</label>
+                    <input v-model="form.title" type="text" class="form-control" id="title">
+                </div>
+            </div>
+            <div class="col-12 mb-3">
+                <div class="form-group">
+                    <label class="form-label">Описание</label>
+                    <input v-model="form.desc" type="text" class="form-control" id="desc">
+                </div>
+            </div>
+            <div class="col-12 mb-3">
+                <div class="form-group">
+                    <label class="form-label">Содержимое</label>
+                    <Editor v-model="form.content"/>
+                </div>
+            </div>
+            <div class="col-12" v-if="this.errors.length > 0">
+                <div class="alert alert-danger" role="alert">
+                    <ul class="errors">
+                        <li v-for="(error, key) in errors" :key=key>
+                            {{ error }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12">
+                <button @click="updateNews" class="btn btn-primary">Сохранить</button>
             </div>
         </div>
-        <div class="col-12 mb-3">
-            <div class="form-group">
-                <label class="form-label">Название</label>
-                <input v-model="form.title" type="text" class="form-control" id="title">
-            </div>
-        </div>
-        <div class="col-12 mb-3">
-            <div class="form-group">
-                <label class="form-label">Описание</label>
-                <input v-model="form.desc" type="text" class="form-control" id="desc">
-            </div>
-        </div>
-        <div class="col-12 mb-3">
-            <div class="form-group">
-                <label class="form-label">Содержимое</label>
-                <Editor v-model="form.content"/>
-            </div>
-        </div>
-        <div class="col-12" v-if="this.errors.length > 0">
-            <div class="alert alert-danger" role="alert">
-                <ul class="errors">
-                    <li v-for="(error, key) in errors" :key=key>
-                        {{ error }}
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-12">
-            <button @click="updateNews" class="btn btn-primary">Сохранить</button>
-        </div>
-    </div>
+    </template>
 </template>
 
 <script>
 import SelectImg from "@/components/UI/SelectImg.vue";
 import Editor from "@/components/Editor.vue";
-
-
 import {ref} from 'vue';
+import AppLoader from "@/components/AppLoader.vue";
 
 export default {
     name: "AdminNewsCreate",
     components: {
+        AppLoader,
         SelectImg,
         Editor
     },
@@ -69,6 +72,7 @@ export default {
                 content: '',
             },
             errors: [],
+            loading: true,
         }
     },
     mounted() {
@@ -90,10 +94,13 @@ export default {
                 .catch(err => {
                     console.log(err)
                 })
+                .finally(() => {
+                    this.loading = false;
+                })
         },
         updateNews() {
             this.errors = [];
-
+            this.loading = true;
             const formData = new FormData();
             formData.append('title', this.form.title);
             formData.append('desc', this.form.desc);
@@ -118,6 +125,9 @@ export default {
                     } else {
                         console.error(err);
                     }
+                })
+                .finally(() => {
+                    this.loading = false;
                 })
         }
     }
