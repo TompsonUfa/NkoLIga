@@ -1,5 +1,6 @@
 <template>
-    <div class="container my-3">
+    <AppLoader v-if="this.loading"/>
+    <div v-else class="container my-3">
         <div class="row mb-3">
             <div class="col-12 p-0">
                 <breadcrumb/>
@@ -51,6 +52,7 @@
 </template>
 
 <script>
+import AppLoader from "@/components/AppLoader.vue";
 import Breadcrumb from "@/components/Breadcrumb.vue";
 import ListNews from "@/components/ListNews.vue";
 import axios from "axios";
@@ -58,12 +60,13 @@ import PopularNews from "@/components/PopularNews.vue";
 
 export default {
     name: "NewsIndex",
-    components: {PopularNews, ListNews, Breadcrumb},
+    components: {PopularNews, ListNews, Breadcrumb, AppLoader},
     data() {
         return {
             news: [],
             popularNews: [],
             pagination: [],
+            loading: true,
         }
     },
     mounted() {
@@ -71,31 +74,32 @@ export default {
     },
     methods: {
         getData(page = 1) {
-            axios.get('/api/news', {
-                params: {
-                    'page': page,
-                }
-            })
-                .then(res => {
-                    this.news = res.data.data;
-                    this.pagination = res.data.meta;
+            Promise.all([
+                axios.get('/api/news', {
+                    params: {
+                        'page': page,
+                    }
+                }),
+                axios.get('/api/news/popular', {
+                    params: {
+                        'page': page,
+                    }
                 })
-                .catch(err => {
-                    console.log(err)
-                })
+            ])
+                .then(([newsResponse, popularNewsResponse]) => {
+                    this.news = newsResponse.data.data;
+                    this.pagination = newsResponse.data.meta;
 
-            axios.get('/api/news/popular', {
-                params: {
-                    'page': page,
-                }
-            })
-                .then(res => {
-                    this.popularNews = res.data.data;
+                    this.popularNews = popularNewsResponse.data.data;
                 })
                 .catch(err => {
-                    console.log(err)
+                    console.log(err);
                 })
+                .finally(() => {
+                    this.loading = false;
+                });
         }
+
     },
 }
 </script>
@@ -136,6 +140,7 @@ export default {
             box-shadow: none;
             background-color: #ddd;
         }
+
         font-size: 16px;
         font-weight: 700;
         color: #000;

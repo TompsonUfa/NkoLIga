@@ -1,5 +1,6 @@
 <template>
-    <section class="detail-news my-3">
+    <app-loader v-if="this.loading"/>
+    <section v-else class="detail-news my-3">
         <div class="container">
             <div class="row mb-4">
                 <div class="col-12 p-0">
@@ -35,13 +36,15 @@ import moment from "moment/moment.js";
 import 'moment/locale/ru';
 import Breadcrumb from "@/components/Breadcrumb.vue";
 import axios from "axios";
+import AppLoader from "@/components/AppLoader.vue";
 
 export default {
     name: "showNews",
-    components: {Breadcrumb},
+    components: {AppLoader, Breadcrumb},
     data() {
         return {
             news: [],
+            loading: true,
         }
     },
     mounted() {
@@ -56,6 +59,9 @@ export default {
                 })
                 .catch(err => {
                     console.log(err)
+                })
+                .finally(() => {
+                    this.loading = false;
                 })
         },
         formatDate(date) {

@@ -1,13 +1,17 @@
 <template>
-    <section-home v-if="this.banners" :banners="this.banners"></section-home>
-    <section-about :abouts="abouts" v-if="abouts.length"></section-about>
-    <section-statistic></section-statistic>
-    <section-news :news="news"></section-news>
-    <section-contact :contact="this.contact"></section-contact>
-    <section-team :team="team"></section-team>
+    <app-loader v-if="this.loading"/>
+    <template v-else>
+        <section-home v-if="this.banners" :banners="this.banners"></section-home>
+        <section-about :abouts="abouts" v-if="abouts.length"></section-about>
+        <section-statistic></section-statistic>
+        <section-news :news="news"></section-news>
+        <section-contact :contact="this.contact"></section-contact>
+        <section-team :team="team"></section-team>
+    </template>
 </template>
 
 <script>
+import AppLoader from "@/components/AppLoader.vue";
 import SectionTeam from "@/components/SectionTeam.vue";
 import SectionHome from "@/components/SectionHome.vue";
 import SectionAbout from "@/components/SectionAbout.vue";
@@ -17,7 +21,7 @@ import SectionStatistic from "@/components/SectionStatistic.vue";
 import SectionContact from "@/components/SectionContact.vue";
 
 export default {
-    components: {SectionContact, SectionStatistic, SectionNews, SectionAbout, SectionHome, SectionTeam},
+    components: {AppLoader, SectionContact, SectionStatistic, SectionNews, SectionAbout, SectionHome, SectionTeam},
     data() {
         return {
             banners: [],
@@ -25,6 +29,7 @@ export default {
             abouts: [],
             team: [],
             contact: [],
+            loading: true,
         }
     },
     mounted() {
@@ -44,6 +49,9 @@ export default {
                     })
                     .catch(err => {
                         console.log(err)
+                    })
+                    .finally(() => {
+                        this.loading = false;
                     })
             })
 
