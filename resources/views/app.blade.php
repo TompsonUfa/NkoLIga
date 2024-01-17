@@ -15,7 +15,7 @@
 Организация спортивных мероприятий, Организация
 круглых столов, Организация фестивалей,физическая культура, спорт, здоровье, АНО Лига,Лига,LIGA">
     <link rel='shortcut icon' type='image/x-icon' href='/public/favicon.ico' />
-    <title>Лига</title>
+    <title>АНО Центр «ЛИГА»</title>
     @vite(['resources/js/app.js', 'resources/sass/app.scss'])
 </head>
 <body>
