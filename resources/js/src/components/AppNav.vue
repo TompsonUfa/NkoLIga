@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg p-0 w-100">
         <div class="container">
             <router-link to="/" class="navbar-brand">
-                <img src="/public/logo.png" alt="Нко Лига" width="45" height="45">
+                <img src="/public/logo.png" alt="АНО Центр «ЛИГА»" width="45" height="45">
             </router-link>
             <template v-if="this.$route.path === '/'">
                 <button

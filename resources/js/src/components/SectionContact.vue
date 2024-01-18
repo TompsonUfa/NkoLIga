@@ -91,7 +91,7 @@ export default {
             position: relative;
             z-index: 1;
             background-color: #fff;
-            padding: 40px 30px;
+            padding: 40px 50px;
         }
         &__list {
             display: flex;
@@ -126,7 +126,6 @@ export default {
         &__title {
             position: relative;
             text-align: center;
-            padding-bottom: 24px;
             margin-bottom: 20px;
             font-weight: 700;
         }

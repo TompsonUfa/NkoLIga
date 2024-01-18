@@ -1,15 +1,29 @@
 <template>
     <footer class="footer" id="contact">
-        <div class="container d-flex justify-content-between">
-            <div class="footer__right">
-                <div class="footer__company">
-                    LIGA @ 2023
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-3">
+                    <div class="footer__title">
+                        АНО Центр «ЛИГА»
+                    </div>
+                    <ul class="footer__nav">
+                        <li v-for="item in links" :key="item.id">
+                            <a :href="item.href">{{ item.name }}</a>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="footer__nav">
-                    <li v-for="item in links" :key="item.id">
-                        <a :href="item.href">{{ item.name }}</a>
-                    </li>
-                </ul>
+                <div class="col col-md-3">
+                    <div class="footer__title">
+                        Наши соцсети
+                    </div>
+                    <div class="footer__socials socials">
+                        <div class="socials__item">
+                            <a href="ttps://vk.com/club221768247">
+                                <i class="socials__icon fa-brands fa-vk"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
@@ -42,7 +56,7 @@ export default {
                 text-decoration: none;
             }
         }
-        &__company{
+        &__title{
             color: #fff;
             padding-bottom: 5px;
             border-bottom: 2px solid var(--second-color);
@@ -60,6 +74,20 @@ export default {
             &__link {
                 color: #fff;
                 text-decoration: none;
+            }
+        }
+        .socials{
+            display: flex;
+            gap: 10px;
+            &__icon {
+                font-size: 25px;
+            }
+        }
+        a {
+            transition: .3s ease;
+            color: #fff;
+            &:hover {
+                color: var(--second-color);
             }
         }
     }
