@@ -82,7 +82,6 @@ export default {
 
     &__bg {
         position: absolute;
-        background-attachment: fixed;
         background-position: center center;
         background-size: cover;
         background-repeat: no-repeat;

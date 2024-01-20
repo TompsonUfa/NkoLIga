@@ -18,7 +18,7 @@
                         </a>
                     </template>
                     <template v-else>
-                        <div class="d-flex gap-3">
+                        <div class="d-flex justify-content-center gap-3">
                             <a href="#about" class="main-slider__btn">Узнать</a>
                             <a href="#contact" class="main-slider__btn">Контакты</a>
                         </div>
