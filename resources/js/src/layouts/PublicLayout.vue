@@ -1,5 +1,5 @@
 <template>
-    <app-header :class="{ scrolled: isScrolled }" :links="links"></app-header>
+    <app-header :links="links"></app-header>
     <main class="main">
         <router-view></router-view>
     </main>
@@ -14,7 +14,6 @@ export default {
     components: { AppHeader, AppFooter },
     data(){
         return {
-            isScrolled: false,
             links: [
                 { id: 1, name: "О нас", href: "#about" },
                 { id: 2, name: "Новости", href: "#news" },
@@ -24,23 +23,12 @@ export default {
 
         }
     },
-    mounted() {
-        window.addEventListener('scroll', this.handleScroll);
-    },
-    beforeUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
-    },
-    methods: {
-        handleScroll(){
-            const scrollPosition = window.scrollY || window.pageYOffset;
-            this.isScrolled = scrollPosition > '0';
-        },
-    }
 }
 </script>
 
 <style scoped lang="scss">
     .main {
         padding-top: var(--header-height);
+        min-height: calc(100vh - var(--header-height));
     }
 </style>

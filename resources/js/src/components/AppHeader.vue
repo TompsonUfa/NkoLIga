@@ -26,15 +26,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.scrolled {
     background-color: #fff;
     box-shadow: 0 2px 3px rgba(100, 100, 100, 0.1);
-    a {
-        transition: .2s ease;
-        &:hover {
-            color: var(--second-color) !important;
-        }
-    }
 }
 </style>
