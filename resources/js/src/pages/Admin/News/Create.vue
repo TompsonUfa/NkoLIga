@@ -29,7 +29,7 @@
             <div class="col-12 mb-3">
                 <div class="form-group">
                     <label class="form-label">Содержимое</label>
-                    <Editor v-model="form.content"/>
+                    <QuillEditor :modules="modules" v-model:content="form.content" contentType="html" theme="snow" toolbar="full"  />
                 </div>
             </div>
             <div class="col-12" v-if="this.errors.length > 0">
@@ -49,13 +49,14 @@
 </template>
 
 <script>
-import AppSidebar from "@/components/AppSidebar.vue";
-import SelectImg from "@/components/UI/SelectImg.vue";
-import Editor from "@/components/Editor.vue";
-
-
 import {ref} from 'vue';
 import AppLoader from "@/components/AppLoader.vue";
+import AppSidebar from "@/components/AppSidebar.vue";
+import SelectImg from "@/components/UI/SelectImg.vue";
+import { QuillEditor } from '@vueup/vue-quill'
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
+import ImageUploader from 'quill-image-uploader';
+import axios from "axios";
 
 export default {
     name: "AdminNewsCreate",
@@ -63,7 +64,31 @@ export default {
         AppLoader,
         AppSidebar,
         SelectImg,
-        Editor
+        QuillEditor,
+    },
+    setup: () => {
+        const modules = {
+                name: 'ImageUploader',
+                module: ImageUploader,
+                options: {
+                    upload: file => {
+                        return new Promise((resolve, reject) => {
+                            const formData = new FormData();
+                            formData.append("image", file);
+
+                            axios.post('/api/admin/upload-image', formData)
+                                .then(res => {
+                                    resolve(res.data);
+                                })
+                                .catch(err => {
+                                    reject("Upload failed");
+                                    console.error("Error:", err)
+                                })
+                        })
+                    }
+                }
+            }
+        return { modules }
     },
     data() {
         return {
@@ -103,7 +128,7 @@ export default {
                     this.loading = false;
                 })
         }
-    }
+    },
 }
 </script>
 

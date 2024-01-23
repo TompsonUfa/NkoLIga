@@ -29,7 +29,7 @@
             <div class="col-12 mb-3">
                 <div class="form-group">
                     <label class="form-label">Содержимое</label>
-                    <Editor v-model="form.content"/>
+                    <QuillEditor :modules="modules" v-model:content="form.content" contentType="html" theme="snow" toolbar="full"  />
                 </div>
             </div>
             <div class="col-12" v-if="this.errors.length > 0">
@@ -49,17 +49,20 @@
 </template>
 
 <script>
-import SelectImg from "@/components/UI/SelectImg.vue";
-import Editor from "@/components/Editor.vue";
 import {ref} from 'vue';
+import SelectImg from "@/components/UI/SelectImg.vue";
 import AppLoader from "@/components/AppLoader.vue";
+import { QuillEditor } from '@vueup/vue-quill'
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
+import ImageUploader from 'quill-image-uploader';
+import axios from "axios";
 
 export default {
     name: "AdminNewsCreate",
     components: {
         AppLoader,
         SelectImg,
-        Editor
+        QuillEditor,
     },
     data() {
         return {
